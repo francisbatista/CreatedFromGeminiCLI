@@ -1,7 +1,6 @@
 package com.example.createdfromgeminicli.ui
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableCornerSize
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.createdfromgeminicli.domain.CalculatorEngine
