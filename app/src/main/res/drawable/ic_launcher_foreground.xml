@@ -11,8 +11,8 @@
         android:fillColor="#000000"
         android:alpha="0.3"
         android:pathData="M28,26h56c3.3,0 6,2.7 6,6v48c0,3.3 -2.7,6 -6,6h-56c-3.3,0 -6,-2.7 -6,-6v-48c0,-3.3 2.7,-6 6,-6z"
-        android:translationX="2"
-        android:translationY="3" />
+        android:translationX="2dp"
+        android:translationY="3dp" />
 
     <!-- Main Body with Gradient -->
     <path android:pathData="M28,24h52c3.3,0 6,2.7 6,6v48c0,3.3 -2.7,6 -6,6h-52c-3.3,0 -6,-2.7 -6,-6v-48c0,-3.3 2.7,-6 6,-6z">
