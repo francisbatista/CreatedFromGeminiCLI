@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/tvResult"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World from Gemini CLI!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginBottom="16dp"
+        android:gravity="end"
+        android:text="0"
+        android:textSize="48sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:columnCount="4"
+        android:rowCount="5">
+
+        <!-- Fila 1 -->
+        <Button android:id="@+id/btnC" android:text="C" android:layout_columnWeight="1" />
+        <Button android:id="@+id/btnDivide" android:text="/" android:layout_columnWeight="1" />
+        <Button android:id="@+id/btnMultiply" android:text="*" android:layout_columnWeight="1" />
+        <Button android:id="@+id/btnDelete" android:text="DEL" android:layout_columnWeight="1" />
+
+        <!-- Fila 2 -->
+        <Button android:id="@+id/btn7" android:text="7" android:layout_columnWeight="1" />
+        <Button android:id="@+id/btn8" android:text="8" android:layout_columnWeight="1" />
+        <Button android:id="@+id/btn9" android:text="9" android:layout_columnWeight="1" />
+        <Button android:id="@+id/btnMinus" android:text="-" android:layout_columnWeight="1" />
+
+        <!-- Fila 3 -->
+        <Button android:id="@+id/btn4" android:text="4" android:layout_columnWeight="1" />
+        <Button android:id="@+id/btn5" android:text="5" android:layout_columnWeight="1" />
+        <Button android:id="@+id/btn6" android:text="6" android:layout_columnWeight="1" />
+        <Button android:id="@+id/btnPlus" android:text="+" android:layout_columnWeight="1" />
+
+        <!-- Fila 4 -->
+        <Button android:id="@+id/btn1" android:text="1" android:layout_columnWeight="1" />
+        <Button android:id="@+id/btn2" android:text="2" android:layout_columnWeight="1" />
+        <Button android:id="@+id/btn3" android:text="3" android:layout_columnWeight="1" />
+        <Button android:id="@+id/btnEqual" android:text="=" android:layout_rowSpan="2" android:layout_columnWeight="1" android:layout_gravity="fill" />
+
+        <!-- Fila 5 -->
+        <Button android:id="@+id/btn0" android:text="0" android:layout_columnSpan="2" android:layout_columnWeight="2" android:layout_gravity="fill" />
+        <Button android:id="@+id/btnDot" android:text="." android:layout_columnWeight="1" />
+
+    </GridLayout>
+</LinearLayout>
