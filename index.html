@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Commits - CreatedFromGeminiCLI</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --ink: #1f2937;
+      --muted: #64748b;
+      --line: #d8dee8;
+      --accent: #0f766e;
+      --accent-strong: #115e59;
+      --tag: #ecfdf5;
+      --shadow: 0 14px 38px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .page {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 32px 18px 48px;
+    }
+
+    .header {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 24px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      margin: 0 0 6px;
+      color: var(--accent-strong);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .repo-link {
+      color: var(--muted);
+      overflow-wrap: anywhere;
+      text-decoration-color: rgba(15, 118, 110, 0.35);
+      text-underline-offset: 4px;
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+      gap: 10px;
+      min-width: 360px;
+    }
+
+    .meta-item {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
+    }
+
+    .meta-label {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .meta-value {
+      display: block;
+      margin-top: 4px;
+      font-weight: 800;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      position: relative;
+    }
+
+    .commit {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .number {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(15, 118, 110, 0.22);
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 21px;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .date {
+      flex: none;
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .details {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 14px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .details li {
+      max-width: 100%;
+      border: 1px solid #bbf7d0;
+      background: var(--tag);
+      color: #166534;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .sha {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    .changes {
+      margin: 14px 0 0;
+      padding-left: 20px;
+      color: #334155;
+    }
+
+    .changes li + li {
+      margin-top: 7px;
+    }
+
+    .commit-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      color: var(--accent-strong);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .commit-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    @media (max-width: 760px) {
+      .header {
+        grid-template-columns: 1fr;
+      }
+
+      .meta {
+        min-width: 0;
+        grid-template-columns: 1fr;
+      }
+
+      .commit {
+        grid-template-columns: 38px 1fr;
+        gap: 10px;
+      }
+
+      .number {
+        width: 34px;
+        height: 34px;
+        font-size: 14px;
+      }
+
+      .card {
+        padding: 16px;
+      }
+
+      .card-head {
+        display: grid;
+      }
+
+      .date {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <div>
+        <p class="eyebrow">Listado de commits</p>
+        <h1>CreatedFromGeminiCLI</h1>
+        <p>
+          <a class="repo-link" href="https://github.com/francisbatista/CreatedFromGeminiCLI" target="_blank" rel="noreferrer">
+            github.com/francisbatista/CreatedFromGeminiCLI
+          </a>
+        </p>
+      </div>
+      <section class="meta" aria-label="Resumen del repositorio">
+        <div class="meta-item">
+          <span class="meta-label">Rama</span>
+          <span class="meta-value">main</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Commits</span>
+          <span class="meta-value">4</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Generado</span>
+          <span class="meta-value">2026-06-07</span>
+        </div>
+      </section>
+    </header>
+
+    <section class="timeline" aria-label="Commits">
+      <article class="commit">
+        <div class="number">1</div>
+        <div class="card">
+          <div class="card-head">
+            <h2>Feature: Premium App Logo Design (#2)</h2>
+            <time class="date" datetime="2026-06-07T00:19:01Z">2026-06-07 00:19 UTC</time>
+          </div>
+          <ul class="details">
+            <li>Autor: Francis Batista</li>
+            <li class="sha">1ff4e1288a5</li>
+          </ul>
+          <ul class="changes">
+            <li>Design custom calculator logo for the app icon</li>
+            <li>Redesign app logo with gradients, shadows, and glass effects for a premium look</li>
+            <li>Fix vector drawable error: add 'dp' unit to translationX and translationY attributes</li>
+          </ul>
+          <a class="commit-link" href="https://github.com/francisbatista/CreatedFromGeminiCLI/commit/1ff4e1288a5bae40d611a92784846a5a142eceb2" target="_blank" rel="noreferrer">
+            Ver commit en GitHub
+          </a>
+        </div>
+      </article>
+
+      <article class="commit">
+        <div class="number">2</div>
+        <div class="card">
+          <div class="card-head">
+            <h2>Feature: Modern Calculator with MVVM Architecture (#1)</h2>
+            <time class="date" datetime="2026-06-06T23:52:47Z">2026-06-06 23:52 UTC</time>
+          </div>
+          <ul class="details">
+            <li>Autor: Francis Batista</li>
+            <li class="sha">95c7b3170c54</li>
+          </ul>
+          <ul class="changes">
+            <li>Add calculator UI and basic button handling</li>
+            <li>Move MainActivity.kt to standard java directory (Step 1)</li>
+            <li>Fix compilation by moving source to java folder and adding gradle wrapper configuration</li>
+            <li>Ensure consistent Gradle plugin and SDK versions to mitigate environment warnings</li>
+            <li>Add default adaptive launcher icons to fix manifest resource errors</li>
+            <li>Redesign UI with modern Neumorphic/Dark theme aesthetics</li>
+            <li>Fix XML syntax errors in themes.xml (missing quotes and closing brackets)</li>
+            <li>Fix button alignment and distribute row weights for a balanced UI</li>
+            <li>Implement real mathematical calculation logic and fix expression evaluation</li>
+            <li>Refactor to MVVM architecture: separate domain logic, viewmodel, and UI activity</li>
+            <li>Fix 'Unresolved reference: MutableCornerSize' by removing unnecessary import</li>
+          </ul>
+          <a class="commit-link" href="https://github.com/francisbatista/CreatedFromGeminiCLI/commit/95c7b3170c5476e5daf72042f65fed4f37d91053" target="_blank" rel="noreferrer">
+            Ver commit en GitHub
+          </a>
+        </div>
+      </article>
+
+      <article class="commit">
+        <div class="number">3</div>
+        <div class="card">
+          <div class="card-head">
+            <h2>Initial Android project structure with Kotlin</h2>
+            <time class="date" datetime="2026-06-06T23:09:23Z">2026-06-06 23:09 UTC</time>
+          </div>
+          <ul class="details">
+            <li>Autor: Francis Batista</li>
+            <li class="sha">ef905e82cd12</li>
+          </ul>
+          <a class="commit-link" href="https://github.com/francisbatista/CreatedFromGeminiCLI/commit/ef905e82cd1270044923b1852e008396b632f107" target="_blank" rel="noreferrer">
+            Ver commit en GitHub
+          </a>
+        </div>
+      </article>
+
+      <article class="commit">
+        <div class="number">4</div>
+        <div class="card">
+          <div class="card-head">
+            <h2>Initial commit</h2>
+            <time class="date" datetime="2026-06-06T23:09:22Z">2026-06-06 23:09 UTC</time>
+          </div>
+          <ul class="details">
+            <li>Autor: Francis Batista</li>
+            <li class="sha">84842d489ec0</li>
+          </ul>
+          <a class="commit-link" href="https://github.com/francisbatista/CreatedFromGeminiCLI/commit/84842d489ec0faecf00298374ca592cae2fc35e5" target="_blank" rel="noreferrer">
+            Ver commit en GitHub
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
